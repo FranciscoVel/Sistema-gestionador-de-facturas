@@ -1,0 +1,52 @@
+.navBarSite {
+    direction: rtl;
+    text-align: right
+}
+
+#form-resumen-factura {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    /* Agrega un margen de 10px alrededor del div */
+    margin-bottom: 20px;
+}
+
+#form-resumen-factura table th {
+    text-align: left;
+}
+
+.ocultar{
+    display:none;
+}
+
+
+.div-margin {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    /* Agrega un margen de 10px alrededor del div */
+    margin-bottom: 20px;
+}
+
+.align-table {
+    table-layout: auto;
+}
+
+.container-scroll {
+    overflow-y: auto;
+    max-height: 90%;
+}
+
+.full-btn {
+    width: 100%;
+}
+
+.sidebar-lbl {
+    color: #999999;
+  }
+  
+.sidebar-lbl:hover {
+    color: #fff;
+    background: none;
+  }
+  

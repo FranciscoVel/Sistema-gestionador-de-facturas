@@ -1,0 +1,287 @@
+<html>
+
+<head>
+
+    <link href="/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/form_style.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/custom_style.css" rel="stylesheet" id="bootstrap-css">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary navbarsite"> <a href="#menu-toggle" id="menu-toggle"
+            class="navbar-brand">
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"> <a class="nav-link" href="/">Iniciar sesion</a> </li>
+                </ul>
+            </div>
+    </nav>
+
+    <div id="wrapper" class="toggled">
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="container-scroll">
+            <div class="container-fluid  ">
+                <div class="row">
+
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-10">
+                        <h2>Registrar persona</h2>
+                        <form id="form_creacion_base" class="div-margin">
+                            <h3>Datos basicos</h3>
+                            <label for="tipoPersona">Tipo persona</label>
+                            <select class="form-select mb-3" id="tipoPersona">
+                                <option selected disabled value="" required>Seleccionar</option>
+                            </select>
+                            <label for="tipoDoc">Tipo documento</label>
+                            <select class="form-select mb-3" id="tipoDoc">
+                                <option selected disabled value="" required>Seleccionar</option>
+                            </select>
+                            <label for="documento">Numero Documento</label>
+                            <input type="number" class="form-control" id="documento" required />
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required />
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" required />
+                        </form>
+
+
+                        <form id="form-contacto" class="div-margin">
+                            <h3>Contactos</h3>
+                            <div class="form-group">
+                                <label for="tipo-con">Tipo contacto</label>
+                                <select class="form-select mb-3" id="tipo-con" required>
+                                    <option selected disabled value="">Seleccionar</option>
+                                </select>
+
+                                <label for="desc-con">Contacto</label>
+                                <input type="text" class="form-control" id="desc-con" required />
+                            </div>
+
+                            <br />
+                            <button class="btn btn-primary full-btn" id="agregar-cont">Agregar</button>
+                        </form>
+                        <br>
+
+                        <form id="form-lista-contactos" class="div-margin">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Tipo contacto</th>
+                                        <th class="text-center">Contacto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </form>
+                        <form class="div-margin" id="form-direcciones">
+                            <h3>Direcciones</h3>
+                            <div class="form-row row align-items-center">
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Tipo de via">
+                                    <select class="custom-select mr-sm-2 form-select" id="tipo-via" name="tipo-via"
+                                        required>
+                                        <option selected disabled value="">Seleccionar</option>
+                                    </select>
+                                    <small>Tipo</small>
+                                </div>
+                                <div class=" col-md-2 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Número o nombre comun de la via">
+                                    <input type="number" class="form-control" id="num-via" name="num-via"
+                                        placeholder="Via" required>
+                                    <small>Número</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Letra que acompaña la nomenclatura principal">
+                                    <input type="text" class="form-control" name="letra-aso" id="letra-aso"
+                                        placeholder="letra">
+                                    <small>Letra asociada</small>
+                                </div>
+                                <div class="form-check col-md-1 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Prefijo BIS">
+                                    <input class="form-check-input" type="checkbox" id="bis" name="bis" value="Bis">
+                                    <small>BIS</small>
+                                </div>
+
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Letra que acompaña al prefijo BIS">
+                                    <input type="text" class="form-control" id="letra-bis" name="letra-bis"
+                                        placeholder="letra bis">
+                                    <small>Letra asociada BIS</small>
+                                </div>
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Cuadrante via principal">
+                                    <select class="custom-select mr-sm-2 form-select" name="cuadrante" id="cuadrante">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Cuadrante</small>
+                                </div>
+                                <hr />
+                                <br />
+
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Número de via generadora">
+                                    <input type="number" class="form-control" id="num-via-gen" name="num-via-gen"
+                                        placeholder="Numero" required>
+                                    <small>Num vía generadora</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Letra asociada a la via generadora">
+                                    <input type="text" class="form-control" id="letra-aso-via-gen"
+                                        name="letra-aso-via-gen" placeholder="letra asociada via gen">
+                                    <small>Letra asociada via gen</small>
+                                </div>
+                                <div class="form-check col-md-1 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Prefijo BIS vía generadora">
+                                    <input class="form-check-input" type="checkbox" id="bis-via-gen" name="bis-via-gen"
+                                        value="bis">
+                                    <small>BIS</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Letra que acompaña al prefijo BIS de la via generadora">
+                                    <input type="text" class="form-control" id="letra-bis-via-gen"
+                                        name="letra-bis-via-gen" placeholder="sufijo bis">
+                                    <small>Letra sujijo</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Número de la placa">
+                                    <input type="number" class="form-control" id="num-placa" placeholder="Numero"
+                                        name="num-placa" required>
+                                    <small>Número placa</small>
+                                </div>
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Cuadrante vía generadora">
+                                    <select class="custom-select mr-sm-2 form-select" id="cuadrante-via-gen"
+                                        name="cuadrante-via-gen">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Cuadrante</small>
+                                </div>
+                                <div class="col-md-3 my-1"></div>
+                                <br />
+                                <hr />
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Agrupación en la que se divide el area">
+                                    <select class="custom-select mr-sm-2 form-select" id="barrio" name="barrio">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Barrio</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Nombre del barrio">
+                                    <input type="text" class="form-control" id="nom-barrio" placeholder="Nombre"
+                                        name="nom-barrio">
+                                    <small>Nombre barrio</small>
+                                </div>
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Espacio predios urbanos">
+                                    <select class="custom-select mr-sm-2 form-select" id="manzana" name="manzana">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Manzana</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Identificación o nombre de la Manzana">
+                                    <input type="text" class="form-control" id="id-manzana" name="id-manzana"
+                                        placeholder="identificador">
+                                    <small>ID manzana</small>
+                                </div>
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Tipo urbanización">
+                                    <select class="custom-select mr-sm-2 form-select" id="urbanizacion"
+                                        name="tipo-urbanizacion">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Urbanización</small>
+                                </div>
+                                <div class=" col-md-4 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Nombre de la urbanización">
+                                    <input type="text" class="form-control" name="nom-urb" id="nom-urb"
+                                        placeholder="nombre">
+                                    <small>Nombre urbanización</small>
+                                </div>
+                                <div class="col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Tipo predio">
+                                    <select class="custom-select mr-sm-2 form-select" name="tipo-predio"
+                                        id="tipo-predio">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Tipo predio</small>
+                                </div>
+                                <div class=" col-md-3 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Identificación del predio">
+                                    <input type="text" class="form-control" name="id-predio" id="id-predio"
+                                        placeholder="identificador">
+                                    <small>ID predio</small>
+                                </div>
+                                <br />
+                                <hr />
+                                <div class="col-md-6 my-1" data-toggle="tooltip" data-placement="top"
+                                    title="Información complementaria de la condición del predio">
+                                    <select class="custom-select mr-sm-6 form-select" name="complemento"
+                                        id="complemento">
+                                        <option selected value="">seleccionar</option>
+                                    </select>
+                                    <small>Complemento</small>
+                                </div>
+                                <button type="submit" id="agregar-dir" class="btn btn-primary">Agregar</button>
+                            </div>
+                            <br>
+                            <br />
+                            <hr />
+                            <div id="form-lista-direcciones">
+                                <h4>Agregadas</h4>
+                            </div>
+
+                    </div>
+                    </form>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <form id="form-reg">
+                            <button class="btn btn-success full-btn" id="btn-reg">Registrar</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="col"></div>
+        </div>
+
+    </div>
+    </div> <!-- /#page-content-wrapper -->
+    </div> <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+
+</body>
+<script src="js/popper.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/creacion-persona.js"></script>
+<script>
+    $(function () {
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        $(window).resize(function (e) {
+            if ($(window).width() <= 768) {
+                $("#wrapper").removeClass("toggled");
+            } else {
+                $("#wrapper").addClass("toggled");
+            }
+
+        });
+
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+</script>
+
+</html>

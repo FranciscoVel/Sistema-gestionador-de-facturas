@@ -1,0 +1,191 @@
+<html>
+
+<head>
+
+    <link href="/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/form_style.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/custom_style.css" rel="stylesheet" id="bootstrap-css">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary navbarsite"> <a href="#menu-toggle" id="menu-toggle"
+            class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler"
+            type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02"
+            aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <label class="nav-link" id="cargo-usuario">Cargo activo</label> </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0"> </form>
+        </div>
+    </nav>
+    <div id="wrapper" class="toggled">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"> <label class="sidebar-lbl" id="nom-usuario">Nombre usuario</label> </li>
+                <li> <a href="crear_factura">Factura</a> </li>
+                <li> <a href="crear_persona">Persona</a> </li>
+                <!--<li> <a href="ver_personas">Ver personas</a> </li>-->
+
+                <li> <a id="btn-cerrar-sesion" href="/">Salir</a> </li>
+            </ul>
+        </div> <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="container-scroll">
+            <div class="container-fluid  ">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div id="desc-fac">
+                            <label>Tipo de factura:</label>
+                            <br>
+                            <div class="form-check form-check-inline vista-auxiliar-de-compras">
+                                <input class="form-check-input" type="checkbox" id="compra-check" value="compra" checked
+                                    disabled>
+                                <label class="form-check-label" for="inlineCheckbox1">Compra</label>
+                            </div>
+                            <div class="form-check form-check-inline vista-director-comercial">
+                                <input class="form-check-input" type="checkbox" id="dev-compra-check" value="compra"
+                                    checked disabled>
+                                <label class="form-check-label" for="inlineCheckbox1">Devolución compra</label>
+                            </div>
+                            <div class="form-check form-check-inline vista-vendedor">
+                                <input class="form-check-input" type="checkbox" id="venta-check" value="compra" checked
+                                    disabled>
+                                <label class="form-check-label" for="inlineCheckbox1">Venta</label>
+                            </div>
+                            <div class="form-check form-check-inline vista-representante-de-ventas">
+                                <input class="form-check-input" type="checkbox" id="dev-venta-check" value="compra"
+                                    checked disabled>
+                                <label class="form-check-label" for="inlineCheckbox1">Devolución venta</label>
+                            </div>
+
+
+                        </div>
+                        <form id="form-cod-factura-dev" class="div-margin vista-representante-de-ventas">
+                            <label for="item">Cod Factura</label>
+                            <input type="text" class="form-control " id="cod-factura-venta" placeholder="codigo devolucion venta"/>
+                            <button class="btn btn-success full-btn" id="consultar-fact">Buscar cod factura</button>
+                        </form>
+                        
+                        <form id="form-cod-factura-dev" class="div-margin vista-director-comercial">
+                            <label for="item">Cod Factura</label>
+                            <input type="text" class="form-control" id="cod-factura-compra" placeholder="codigo devolucion compra"/>
+                         
+                            <button class="btn btn-success full-btn" id="consultar-fact2">Buscar cod factura</button>
+                        </form>
+                        <form id="form_tipo_cl" class="div-margin normal">
+                            <h3>Búsqueda Tipo persona</h3>
+
+                            <label for="item">Nombre persona</label>
+                            <input type="text" class="form-control" id="nomCl" placeholder="Minimo 3 caracteres"/>
+
+                            <button class="btn btn-primary full-btn" id="buscar-cliente">Buscar</button>
+
+                        </form>
+                       
+                        <br />
+
+                        <form id="form-lista-cl" class="div-margin normal">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Nombre persona</th>
+                                        <th class="text-center">Tipo persona</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </form>                    
+                        <h3 class="vista-director-comercial">Productos de la factura a modificar</h3>
+                        <h3 class="vista-representante-de-ventas">Productos de la factura a modificar</h3>
+                        <form id="form-lista-items" class="div-margin devolucion">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Referencia</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-center">Producto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </form>
+                        
+                        <h3>Persona seleccionado: <label id="lblCl">No hay persona seleccionado</label></h3>
+                        <form id="factura-form-prod" class="div-margin">
+                            <div class="form-group">
+                                <label for="item">Codigo del producto</label>
+                                <input type="text" class="form-control" id="cod-producto" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item">Cantidad</label>
+                                <input type="number" class="form-control" id="cant-producto" required />
+                            </div>
+                            <br />
+                            <button class="btn btn-primary full-btn" value="Agregar" id="agregar-item">Agregar</button>
+                        </form>
+                        <br>
+                        <form id="form-resumen-factura" class="div-margin">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Producto</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-center">Precio Unitario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <hr>
+                            <button class="btn btn-primary full-btn" value="Totalizar" id="totalBtn">Totalizar</button>
+                            <br>
+                            <hr>
+                            <label id="lblTotal">Total: ....</label>
+
+                        </form>
+
+                        <form id="form-create">
+                            <button class="btn btn-success full-btn" id="enviarBtn" value="Crear">Crear</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+
+        </div>
+    </div> <!-- /#page-content-wrapper -->
+    </div> <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+
+</body>
+<script src="js/creacion-factura.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script> <!-- Menu Toggle Script -->
+
+<script>
+    $(function () {
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        $(window).resize(function (e) {
+            if ($(window).width() <= 768) {
+                $("#wrapper").removeClass("toggled");
+            } else {
+                $("#wrapper").addClass("toggled");
+            }
+        });
+    });
+
+</script>
+
+</html>

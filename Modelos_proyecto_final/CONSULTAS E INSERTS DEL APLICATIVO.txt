@@ -1,0 +1,65 @@
+CONSULTAS DEL APLICATIVO
+
+* select lower(c.nomCargo), lower(c.estadoCargo) from cargo c, empleado e, empleados_cargos ep where ep.codempleado = e.codempleado and ep.codcargo =                   c.codcargo and e.codempleado = :1;
+
+*select E.codEmpleado,E.nomEmpleado, E.apellEmpleado, E.correo, EC.codCargo, C.nomCargo
+ FROM empleado E, empleados_cargos EC, Cargo C
+ WHERE E.codEmpleado = :1 AND E.codEmpleado = EC.CodEmpleado AND C.codCargo = EC.CodCargo 
+ AND C.estadoCargo = 1;
+
+*select f.idTipoFac, f.nFactura, p.nombre || p.apellido, p.idTipoPersona, p.idTipoDoc, p.nDocumento
+ from Factura f, persona p  
+ where f.nFactura = :1 and f.idTipoFac = :2 and p.nDocumento = f.nDocumento and 
+ p.idTipoPersona = f.idTipoPersona and p.idTipoDoc = f.idTipoDoc;
+
+*select posicion, idnomen, descnomen from Nomenclatura order by posicion;
+
+*select idTipoDoc, NDocumento, IDTipoPersona, Nombre, Apellido from Persona;
+
+*select idTipoContacto, descTipoContacto from TipoContacto;
+
+*select idTipoDoc, descTipoDoc from TipoDoc;
+
+*select * from tipoFactura;
+
+*select idTipoPersona, descTipoPersona from TipoPersona;
+
+*select idTipoDoc, NDocumento, IDTipoPersona, Nombre, Apellido from Persona
+ WHERE idtipopersona = :1 AND lower(nombre) like '%' || :2 || '%' ;
+
+*select P.idCatProducto, P.refProducto, P.nomProducto, H.valor from Producto P, historicoPrecio H 
+WHERE P.REFPRODUCTO = H.REFPRODUCTO AND P.refProducto = :1 AND H.FECHAFIN is null;
+
+*SELECT D.IDCATPRODUCTO, D.REFPRODUCTO, D.CANTIDAD, I.CONSECINVEN, P.NOMPRODUCTO FROM DETALLEFACTURA D, INVENTARIO I, PRODUCTO P  
+ WHERE D.NFACTURA = :1 AND D.NFACTURA = I.NFACTURA AND D.IDTIPOFAC = I.IDTIPOFAC AND D.ITEM = I.ITEM
+ AND D.IDCATPRODUCTO = I.IDCATPRODUCTO AND D.REFPRODUCTO = I.REFPRODUCTO AND P.REFPRODUCTO = D.REFPRODUCTO;
+
+*SELECT NFACTURA FROM Factura ORDER BY FECHAFACTURA DESC FETCH FIRST 1 ROW ONLY;
+
+*SELECT EXISTENCIA FROM INVENTARIO WHERE REFPRODUCTO = :1 ORDER BY FECHAINVE DESC FETCH FIRST 1 ROW ONLY;
+
+
+INSERCIONES DEL APLICATIVO
+
+*INSERT INTO CONTACTO (CONSECCONTACTO, IDTIPOCONTACTO, DESCTIPOCONTACTO, IDTIPOPERSONA, IDTIPODOC, NDOCUMENTO, DESCCONTACTO)
+VALUES (COALESCE(TO_CHAR((SELECT MAX(TO_NUMBER(CONSECCONTACTO)) + 1 FROM CONTACTO), 'FM999999999'), '0'), :2, :3, :4, :5, :6, :7);
+
+*INSERT INTO DETALLEFACTURA (IDTIPOFAC, NFACTURA, ITEM, IDCATPRODUCTO, REFPRODUCTO, CANTIDAD, PRECIO)
+ VALUES (:1, :2, :3, :4, :5, :6, :7);
+
+*INSERT INTO DIRECCION (POSICION, IDDIRECCION, IDTIPOPERSONA, IDTIPODOC, NDOCUMENTO, IDNOMEN, VALORDIREC)
+ VALUES (:1, :2, :3, :4, :5, :6, :7);
+
+*INSERT INTO FACTURA (IDTIPOFAC, NFACTURA, IDTIPOPERSONA, IDTIPODOC, NDOCUMENTO, FAC_IDTIPOFAC,  FAC_NFACTURA, CODEMPLEADO, FECHAFACTURA, TOTALFACTURA)
+ VALUES (:1, COALESCE(TO_CHAR((SELECT MAX(TO_NUMBER(NFACTURA)) + 1 FROM FACTURA), 'FM999999999'), '0'),
+ :3, :4, :5, :6, :7, :8, SYSDATE, :10);
+
+*INSERT INTO INVENTARIO (CONSECINVEN, IDCATPRODUCTO, REFPRODUCTO, IDTIPOFAC, NFACTURA, ITEM, INVENTARIOMODIFICADO, FECHAINVE, SALEN,  ENTRAN, EXISTENCIA)
+ VALUES (COALESCE(TO_CHAR((SELECT MAX(TO_NUMBER(CONSECINVEN)) + 1 FROM INVENTARIO), 'FM999999999'), '0'), :2,
+ :3, :4, :5, :6, :7, SYSDATE, :9, :10, :11);
+
+*INSERT INTO Persona (IDTIPOPERSONA, IDTIPODOC, NDOCUMENTO, NOMBRE, APELLIDO)
+ VALUES (:1, :2, :3, :4, :5);
+
+*INSERT INTO tIPOPERSONA (IDTIPOPERSONA, DESCTIPOPERSONA)
+ VALUES (:1, :2);
